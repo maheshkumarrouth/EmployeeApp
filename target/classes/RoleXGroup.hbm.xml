@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 Dec, 2015 9:31:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="de.employeeApp.dao.model.employeeManagementSystem.RoleXGroup" table="Role_X_Group" catalog="EmployeeManagementSystem" optimistic-lock="version">
+        <composite-id name="id" class="de.employeeApp.dao.model.employeeManagementSystem.RoleXGroupId">
+            <key-property name="roleId" type="int">
+                <column name="roleId" />
+            </key-property>
+            <key-property name="groupId" type="int">
+                <column name="groupId" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>
