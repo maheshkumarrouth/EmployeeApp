@@ -23,9 +23,7 @@
 	
 	    <bean id="liveDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
     		<property name="jndiName" value="java:jboss/datasources/EmpAppMySQLDS" />
-		</bean>
-		
-		  
+		</bean>	  
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/Iq" />

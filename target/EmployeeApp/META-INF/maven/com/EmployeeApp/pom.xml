@@ -7,18 +7,20 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>EmployeeApp Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<slf4j.version>1.6.6</slf4j.version>
+		<logback.version>1.0.7</logback.version>
+	</properties>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+   
     <dependency>
 	<groupId>javax.mail</groupId>
 	<artifactId>mail</artifactId>
 	<version>1.4</version>
     </dependency>
+    
+    
     
     <dependency>
 	<groupId>com.ning</groupId>
@@ -53,16 +55,19 @@
 	<artifactId>jackson-databind</artifactId>
 	<version>2.6.0</version>
 </dependency>
+    
     <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-webmvc</artifactId>
 	<version>4.0.0.RELEASE</version>
     </dependency>
-   <dependency>
+    
+    <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-context-support</artifactId>
 	<version>4.0.0.RELEASE</version>
     </dependency>
+    
     <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-web</artifactId>
@@ -80,24 +85,12 @@
     <artifactId>spring-orm</artifactId>
     <version>4.0.0.RELEASE</version>
     </dependency>
-   
-    <dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>4.3.5.Final</version>
-    </dependency>
-       
+          
     <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>5.1.6</version>
     </dependency>
-    
-    <dependency>
-			<groupId>kunin2006A</groupId>
-			<artifactId>kunin2006A</artifactId>
-			<version>1.0</version>
-   </dependency>
     
     <dependency>
 	<groupId>commons-logging</groupId>
@@ -111,14 +104,41 @@
 	<version>4.0.0.RELEASE</version>
 	</dependency>
 	<dependency>
+	
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-jdbc</artifactId>
 	<version>4.0.0.RELEASE</version>
     </dependency>
     
+    <dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+    <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.5.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
   </dependencies>
   <build>
-    <finalName>SendMailer</finalName>
+    <finalName>EmployeeApp</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

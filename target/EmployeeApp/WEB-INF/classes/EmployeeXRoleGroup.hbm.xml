@@ -3,8 +3,8 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 14 Dec, 2015 9:31:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="de.employeeApp.dao.model.employeeManagementSystem.EmployeeXRoleGroup" table="Employee_X_RoleGroup" catalog="EmployeeManagementSystem" optimistic-lock="version">
-        <composite-id name="id" class="de.employeeApp.dao.model.employeeManagementSystem.EmployeeXRoleGroupId">
+    <class name="de.employeeapp.dao.model.employeeManagementSystem.EmployeeXRoleGroup" table="Employee_X_RoleGroup" catalog="EmployeeManagementSystem" optimistic-lock="version">
+        <composite-id name="id" class="de.employeeapp.dao.model.employeeManagementSystem.EmployeeXRoleGroupId">
             <key-property name="empId" type="int">
                 <column name="empId" />
             </key-property>
