@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 Dec, 2015 9:31:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="de.employeeapp.dao.model.employeeManagementSystem.Employee" table="Employee" catalog="EmployeeManagementSystem" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="firstName" length="100" not-null="true" />
+        </property>
+        <property name="surName" type="string">
+            <column name="surName" length="100" not-null="true" />
+        </property>
+        <property name="telephone" type="int">
+            <column name="telephone" not-null="true" />
+        </property>
+        <property name="gender" type="boolean">
+            <column name="gender" not-null="true" />
+        </property>
+        <property name="emailId" type="string">
+            <column name="emailID" length="256" not-null="true" />
+        </property>
+        <property name="employeeJoiningDate" type="date">
+            <column name="employeeJoiningDate" length="0" />
+        </property>
+        <property name="dateOfBirth" type="date">
+            <column name="dateOfBirth" length="0" />
+        </property>
+        <property name="verified" type="byte">
+            <column name="verified" not-null="true" />
+        </property>
+        <property name="deleted" type="byte">
+            <column name="deleted" not-null="true" />
+        </property>
+        <property name="lastUpdated" type="timestamp">
+            <column name="lastUpdated" length="0" not-null="true" />
+        </property>
+        <set name="employeeXLogins" table="Employee_X_Login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employeeID" not-null="true" />
+            </key>
+            <one-to-many class="de.employeeapp.dao.model.employeeManagementSystem.EmployeeXLogin" />
+        </set>
+        <set name="verificationTokens" table="Verification_Token" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empID" />
+            </key>
+            <one-to-many class="de.employeeapp.dao.model.employeeManagementSystem.VerificationToken" />
+        </set>
+    </class>
+</hibernate-mapping>
