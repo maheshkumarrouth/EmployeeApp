@@ -21,14 +21,25 @@
 	<aop:aspectj-autoproxy />
 		<tx:annotation-driven />
 	
-	    <bean id="liveDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <!-- bean id="liveDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
     		<property name="jndiName" value="java:jboss/datasources/EmpAppMySQLDS" />
-		</bean>	  
+		</bean-->
+			 
+		<bean id="appProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:mail.properties</value>
+				<value>classpath:database.properties</value>
+			</list>
+		</property>
+	   </bean> 
+	   
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/Iq" />
-        <property name="username" value="root" />
-        <property name="password" value="123456" />
+        <property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.user}" />
+		<property name="password" value="${db.pass}" />
     </bean>
     
     <bean id="jdbctemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -36,10 +47,10 @@
     </bean>
     	
     	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="mahee.routh@gmail.com" />
-		<property name="password" value="9494927882" />
+		<property name="host" value="${smtp.host}" />
+		<property name="port" value="${smtp.port}" />
+		<property name="username" value="${smtp.user}" />
+		<property name="password" value="${smtp.pass}" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.transport.protocol">smtp</prop>
@@ -51,17 +62,17 @@
 	
     	
     	<bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        	<property name="dataSource" ref="liveDataSource"/>
+        	<property name="dataSource" ref="datasource"/>
         	<property name="mappingResources">
             	<list>
-                	<value>Employee.hbm.xml</value>
-                	<value>VerificationToken.hbm.xml</value>
-                	<value>RoleXGroup.hbm.xml</value>
-                	<value>Roles.hbm.xml</value>
-                	<value>Groups.hbm.xml</value>
-                	<value>EmployeeXRoleGroup.hbm.xml</value>
-                	<value>EmployeeXLogin.hbm.xml</value>
-                	<value>ConformationMailQueue.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/Employee.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/VerificationToken.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/RoleXGroup.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/Roles.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/Groups.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/EmployeeXRoleGroup.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/EmployeeXLogin.hbm.xml</value>
+                	<value>de/employeeapp/dao/model/employeeManagementSystem/ConformationMailQueue.hbm.xml</value>
             	</list>
         	</property>
         	<property name="hibernateProperties" ref="exampleHibernateProperties"/>
@@ -71,7 +82,7 @@
         <property name="properties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
                 <!--<prop key="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</prop>-->
                 <prop key="hibernate.dbcp.maxActive">100</prop>
                 <prop key="hibernate.dbcp.whenExhaustedAction">1</prop>

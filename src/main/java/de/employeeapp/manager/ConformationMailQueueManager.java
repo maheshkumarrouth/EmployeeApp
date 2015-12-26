@@ -23,7 +23,7 @@ public class ConformationMailQueueManager {
 	@Autowired
 	private VerificationTokenManager verificationTokenManager;
 	
-	@Transactional(value="transactionManager",readOnly=false)
+	@Transactional(readOnly=false)
 	public ConformationMailQueue fetchMailConformationData(){
 		ConformationMailQueue conformationMailQueue = conformationMailQueueBasicDAO.findByEmployeeID();
 		if(conformationMailQueue != null){
@@ -34,7 +34,7 @@ public class ConformationMailQueueManager {
 		return conformationMailQueue;
 	}
 	
-	@Transactional(value="transactionManager",readOnly=false)
+	@Transactional(readOnly=false)
 	public void sendMailConformationToEmployee(ConformationMailQueue conformationMailQueue){
 		try{
 			VerificationToken verificationToken = verificationTokenManager.findVerificationTokenByEmployeeID(conformationMailQueue.getEmployeeId());

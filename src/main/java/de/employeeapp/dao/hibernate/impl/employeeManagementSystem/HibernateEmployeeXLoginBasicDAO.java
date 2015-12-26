@@ -21,7 +21,7 @@ public class HibernateEmployeeXLoginBasicDAO implements EmployeeXLoginBasicDAO{
     private SessionFactory mySessionFactory;
     
 	@Override
-	@Transactional(value="transactionManager")
+	@Transactional
 	public boolean isUserAlreadyExisted(String userName) {
 		try{
 			Session session = mySessionFactory.getCurrentSession();

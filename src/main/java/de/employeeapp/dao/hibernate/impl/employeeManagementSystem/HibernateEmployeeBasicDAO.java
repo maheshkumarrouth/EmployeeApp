@@ -75,7 +75,7 @@ public class HibernateEmployeeBasicDAO implements EmployeeBasicDAO{
 	}
 
 	@Override
-	@Transactional(value="transactionManager")
+	@Transactional
 	public boolean isEmailAlreadyExisted(String email) {
 		try{
 			Session session = mySessionFactory.getCurrentSession();
@@ -93,7 +93,7 @@ public class HibernateEmployeeBasicDAO implements EmployeeBasicDAO{
 	}
 	
 	@Override
-	@Transactional(value="transactionManager")
+	@Transactional
 	public Employee findEmployeeByToken(String token) {
 		try{
 			Criteria criteria = mySessionFactory.getCurrentSession().createCriteria(VerificationToken.class,"verificationToken");

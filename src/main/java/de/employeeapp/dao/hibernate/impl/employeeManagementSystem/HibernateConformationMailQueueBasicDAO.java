@@ -20,7 +20,7 @@ public class HibernateConformationMailQueueBasicDAO implements ConformationMailQ
 	private SessionFactory mySessionFactory;
 	
 	@Override
-	@Transactional(value="transactionManager",readOnly=false)
+	@Transactional(readOnly=false)
 	public void save(ConformationMailQueue conformationMailQueue) {
 		try{
 			mySessionFactory.getCurrentSession().save(conformationMailQueue);
@@ -38,7 +38,7 @@ public class HibernateConformationMailQueueBasicDAO implements ConformationMailQ
 	}
 	
 	@Override
-	@Transactional(value="transactionManager",readOnly=false)
+	@Transactional(readOnly=false)
 	public void delete(ConformationMailQueue conformationMailQueue) {
 		try{
 			mySessionFactory.getCurrentSession().delete(conformationMailQueue);

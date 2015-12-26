@@ -22,7 +22,7 @@ public class EmployeeManager {
 	@Autowired
 	private ApplicationEventPublisher eventPublisher;
 	
-	@Transactional(value="transactionManager",readOnly=false)
+	@Transactional(readOnly=false)
 	public void doEmployeeRegistration(de.employeeapp.beans.Employee employee){
 		
 		Employee employeeObject = new Employee();
@@ -45,7 +45,7 @@ public class EmployeeManager {
 		
 	}
 	
-	@Transactional(value="transactionManager",readOnly=false)
+	@Transactional(readOnly=false)
 	public void doActivateEmployee(String token){
 		System.out.println("doActivateEmployee");
 		Employee employee = employeeBasicDAO.findEmployeeByToken(token);
