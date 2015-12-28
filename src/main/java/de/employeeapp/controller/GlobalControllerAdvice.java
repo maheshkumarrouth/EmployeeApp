@@ -20,7 +20,6 @@ public class GlobalControllerAdvice{
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
 	public ErrorDetail emailAlreadyExistedException(Exception exception) {
-		System.out.println("emailAlreadyExistedException");
 		ErrorDetail error = new ErrorDetail();
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage(exception.getLocalizedMessage());
