@@ -7,14 +7,11 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>EmployeeApp Maven Webapp</name>
   <url>http://maven.apache.org</url>
-   
-   <properties>
+  <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<slf4j.version>1.6.1</slf4j.version>
+		<slf4j.version>1.6.6</slf4j.version>
 		<logback.version>1.0.7</logback.version>
-		<spring.version>4.2.4.RELEASE</spring.version>
 	</properties>
-	
   <dependencies>
    
     <dependency>
@@ -22,7 +19,6 @@
 	<artifactId>mail</artifactId>
 	<version>1.4</version>
     </dependency>
-    
     <dependency>
 	<groupId>com.ning</groupId>
 	<artifactId>async-http-client</artifactId>
@@ -52,6 +48,12 @@
 	<version>2.7.1</version>
 </dependency>
 	
+	<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-oxm</artifactId>
+	<version>4.0.0.RELEASE</version>
+	</dependency>
+	
     <dependency>
 	<groupId>com.fasterxml.jackson.core</groupId>
 	<artifactId>jackson-databind</artifactId>
@@ -61,34 +63,33 @@
     <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-webmvc</artifactId>
-	<version>${spring.version}</version>
+	<version>4.0.0.RELEASE</version>
     </dependency>
     
     <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-context-support</artifactId>
-	<version>${spring.version}</version>
+	<version>4.0.0.RELEASE</version>
     </dependency>
     
     <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-web</artifactId>
-	<version>${spring.version}</version>
+	<version>4.0.0.RELEASE</version>
    </dependency>
-  
-  <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-orm</artifactId>
-    <version>${spring.version}</version>
-    </dependency>
-    
    
     <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-entitymanager</artifactId>
     <version>4.3.5.Final</version>
     </dependency>
-        
+   
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-orm</artifactId>
+    <version>4.0.0.RELEASE</version>
+    </dependency>
+          
     <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
@@ -104,21 +105,15 @@
     <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-aop</artifactId>
-	<version>${spring.version}</version>
+	<version>4.0.0.RELEASE</version>
 	</dependency>
 	<dependency>
 	
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-jdbc</artifactId>
-	<version>${spring.version}</version>
+	<version>4.0.0.RELEASE</version>
     </dependency>
     
-    <dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-oxm</artifactId>
-	<version>${spring.version}</version>
-	</dependency>
-	
     <dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
