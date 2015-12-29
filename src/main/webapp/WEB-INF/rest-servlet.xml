@@ -21,10 +21,6 @@
 	<aop:aspectj-autoproxy />
 		<tx:annotation-driven />
 	
-	    <!-- bean id="liveDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-    		<property name="jndiName" value="java:jboss/datasources/EmpAppMySQLDS" />
-		</bean-->
-			 
 		<bean id="appProperties"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -33,20 +29,10 @@
 				<value>classpath:database.properties</value>
 			</list>
 		</property>
+		
 	   </bean> 
-	   
-    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${db.driver}" />
-		<property name="url" value="${db.url}" />
-		<property name="username" value="${db.user}" />
-		<property name="password" value="${db.pass}" />
-    </bean>
-    
-    <bean id="jdbctemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="datasource" />
-    </bean>
     	
-    	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    	<!--bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="${smtp.host}" />
 		<property name="port" value="${smtp.port}" />
 		<property name="username" value="${smtp.user}" />
@@ -58,65 +44,5 @@
 				<prop key="mail.smtp.starttls.enable">true</prop>
 			</props>
 		</property>
-	</bean>
-	
-    	
-    	<bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        	<property name="dataSource" ref="datasource"/>
-        	<property name="mappingResources">
-            	<list>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/Employee.hbm.xml</value>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/VerificationToken.hbm.xml</value>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/RoleXGroup.hbm.xml</value>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/Roles.hbm.xml</value>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/Groups.hbm.xml</value>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/EmployeeXRoleGroup.hbm.xml</value>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/EmployeeXLogin.hbm.xml</value>
-                	<value>de/employeeapp/dao/model/employeeManagementSystem/ConformationMailQueue.hbm.xml</value>
-            	</list>
-        	</property>
-        	<property name="hibernateProperties" ref="exampleHibernateProperties"/>
-    	</bean>
-		
-		<bean id="exampleHibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="properties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.show_sql">false</prop>
-                <!--<prop key="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</prop>-->
-                <prop key="hibernate.dbcp.maxActive">100</prop>
-                <prop key="hibernate.dbcp.whenExhaustedAction">1</prop>
-                <prop key="hibernate.dbcp.maxWait">120000</prop>
-                <prop key="hibernate.dbcp.maxIdle">10</prop>
-                <prop key="hibernate.dbcp.ps.maxActive">100</prop>
-                <prop key="hibernate.dbcp.ps.whenExhaustedAction">1</prop>
-                <prop key="hibernate.dbcp.ps.maxWait">120000</prop>
-                <prop key="hibernate.dbcp.ps.maxIdle">100</prop>
-                <prop key="hibernate.bytecode.use_reflection_optimizer">false</prop>
-                <prop key="hibernate.use_lazy_proxy_factory">true</prop>
-                <prop key="hibernate.unsaved-value">false</prop>
-                <prop key="hibernate.connection.autocommit">false</prop>
-                <!--prop key="hibernate.current_session_context_class">thread</prop-->
-                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
-                <prop key="hibernate.listeners.envers.autoRegister">false</prop>
-                <prop key="hibernate.connection.charSet">ISO8859_1</prop>
-                <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop>
-                <prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform</prop>
-                <prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
-                <prop key="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</prop>                
-                </props>
-        </property>
-    </bean>
-        
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="mySessionFactory"/>
-    </bean>
-    
-    
-<!--bean id="transactionTemplate"
-class="org.springframework.transaction.support.TransactionTemplate">
-<property name="transactionManager" ref="transactionManagers"></property>
-</bean-->
- 
-		
-  </beans>
+	</bean-->  	
+    </beans>

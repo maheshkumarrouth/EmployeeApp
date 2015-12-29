@@ -1,14 +1,8 @@
 package de.employeeapp.service;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import de.employeeapp.beans.ErrorDetail;
 import de.employeeapp.beans.LoginDetails;
 import de.employeeapp.dao.model.employeeManagementSystem.Employee;
 import de.employeeapp.exceptions.EmailAlreadyExistedException;
@@ -24,26 +18,25 @@ public class ValidationService {
 	@Autowired
 	private EmployeeManager employeeManager;
 		
-	@ExceptionHandler(EmailAlreadyExistedException.class)
-	@ResponseStatus(value=HttpStatus.NOT_FOUND)
-	public ErrorDetail emailAlreadyExistedException(Exception exception) {
-		ErrorDetail error = new ErrorDetail();
-		error.setStatus(HttpStatus.BAD_REQUEST.value());
-		error.setMessage(exception.getLocalizedMessage());
-		return error;
-	}
-	
-	@ExceptionHandler(UserNameAlreadyExisted.class)
-	@ResponseStatus(value=HttpStatus.NOT_FOUND)
-	public ErrorDetail userNameAlreadyExisted(Exception exception) {
-		ErrorDetail error = new ErrorDetail();
-		error.setStatus(HttpStatus.BAD_REQUEST.value());
-		error.setMessage(exception.getLocalizedMessage());
-		return error;
-	}
+//	@ExceptionHandler(EmailAlreadyExistedException.class)
+//	@ResponseStatus(value=HttpStatus.NOT_FOUND)
+//	public ErrorDetail emailAlreadyExistedException(Exception exception) {
+//		ErrorDetail error = new ErrorDetail();
+//		error.setStatus(HttpStatus.BAD_REQUEST.value());
+//		error.setMessage(exception.getLocalizedMessage());
+//		return error;
+//	}
+//	
+//	@ExceptionHandler(UserNameAlreadyExisted.class)
+//	@ResponseStatus(value=HttpStatus.NOT_FOUND)
+//	public ErrorDetail userNameAlreadyExisted(Exception exception) {
+//		ErrorDetail error = new ErrorDetail();
+//		error.setStatus(HttpStatus.BAD_REQUEST.value());
+//		error.setMessage(exception.getLocalizedMessage());
+//		return error;
+//	}
 	
 	public boolean validateEmployee(de.employeeapp.beans.Employee employee) throws EmailAlreadyExistedException,UserNameAlreadyExisted{
-		System.out.println("validateEmployee");
 		if(isEmailAlreadyExisted(employee.getEmailId()))
 			throw new EmailAlreadyExistedException("Email");
 			
