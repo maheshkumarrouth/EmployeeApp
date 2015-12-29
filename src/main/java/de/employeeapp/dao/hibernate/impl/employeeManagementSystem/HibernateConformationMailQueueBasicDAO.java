@@ -15,41 +15,33 @@ import org.springframework.transaction.annotation.Transactional;
 import de.employeeapp.dao.interfaces.employeeManagementSystem.ConformationMailQueueBasicDAO;
 import de.employeeapp.dao.model.employeeManagementSystem.ConformationMailQueue;
 @Component("conformationMailQueueBasicDAO")
-public class HibernateConformationMailQueueBasicDAO implements ConformationMailQueueBasicDAO{
-	@Autowired
-	private SessionFactory mySessionFactory;
+public class HibernateConformationMailQueueBasicDAO extends AbstractHibernateImpl implements ConformationMailQueueBasicDAO {
+	
 	
 	@Override
 	@Transactional(readOnly=false)
 	public void save(ConformationMailQueue conformationMailQueue) {
-		try{
-			mySessionFactory.getCurrentSession().save(conformationMailQueue);
-		}catch(HibernateException e){
-			e.printStackTrace();
-		}
+		
+		mySessionFactory.getCurrentSession().save(conformationMailQueue);
+			
 	}
 	
 	public void update(ConformationMailQueue conformationMailQueue) {
-		try{
-			mySessionFactory.getCurrentSession().update(conformationMailQueue);
-		}catch(HibernateException e){
-			e.printStackTrace();
-		}
+		
+		mySessionFactory.getCurrentSession().update(conformationMailQueue);
+		
 	}
 	
 	@Override
 	@Transactional(readOnly=false)
 	public void delete(ConformationMailQueue conformationMailQueue) {
-		try{
-			mySessionFactory.getCurrentSession().delete(conformationMailQueue);
-		}catch(HibernateException e){
-			e.printStackTrace();
-		}
+		
+		mySessionFactory.getCurrentSession().delete(conformationMailQueue);
+		
 	}
 	
 	@Override
 	public ConformationMailQueue findByEmployeeID() {
-		try{
 			Session session = mySessionFactory.getCurrentSession();
 			Criteria criteria = session.createCriteria(ConformationMailQueue.class);
 			criteria.add(Restrictions.eq("status", new Byte("0")));
@@ -59,9 +51,6 @@ public class HibernateConformationMailQueueBasicDAO implements ConformationMailQ
 			if(list!=null && !list.isEmpty()){
 				return (ConformationMailQueue)list.get(0);
 			}
-		}catch(HibernateException hx){
-			hx.printStackTrace();
-		}
 		return null;
 	}
 }

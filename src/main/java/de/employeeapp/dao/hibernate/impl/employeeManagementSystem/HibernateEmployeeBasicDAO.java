@@ -18,35 +18,27 @@ import de.employeeapp.dao.model.employeeManagementSystem.EmployeeXLogin;
 import de.employeeapp.dao.model.employeeManagementSystem.VerificationToken;
 
 @Component("employeeBasicDAO")
-public class HibernateEmployeeBasicDAO implements EmployeeBasicDAO{
+public class HibernateEmployeeBasicDAO extends AbstractHibernateImpl implements EmployeeBasicDAO{
 
-	@Autowired
-	private SessionFactory mySessionFactory ; 
-	
 	@Override
 	public Employee saveEmployeeDetails(Employee employee) {
-		try{
+		
 			Session session = mySessionFactory.getCurrentSession();
 			session.save(employee);
-		}catch(HibernateException ex){
-			ex.printStackTrace();
-		}
+		
 		return employee;
 	}
 
 	@Override
 	public void updateEmployeeDetails(Employee employee) {
-		try{
+		
 			Session session = mySessionFactory.getCurrentSession();
 			session.update(employee);
-		}catch(HibernateException ex){
-			ex.printStackTrace();
-		}
+		
 	}
 	
 	@Override
 	public Employee getEmployeeDetailsByEmployeeID(Integer employyeID) {
-		try{
 			Session session = mySessionFactory.getCurrentSession();
 			Criteria criteria = session.createCriteria(Employee.class);
 			criteria.add(Restrictions.eq("id",employyeID));
@@ -55,29 +47,20 @@ public class HibernateEmployeeBasicDAO implements EmployeeBasicDAO{
 				return null;
 			}
 			return (Employee)list.get(0);
-		}catch(HibernateException ex){
-			ex.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
 	public List loadAllEmployeeDetails() {
-		try{
 			Session session = mySessionFactory.getCurrentSession();
 			Criteria criteria = session.createCriteria(Employee.class);
 			List list = criteria.list();
 			return list;
-		}catch(HibernateException ex){
-			ex.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
 	@Transactional
 	public boolean isEmailAlreadyExisted(String email) {
-		try{
+		
 			Session session = mySessionFactory.getCurrentSession();
 			Criteria criteria = session.createCriteria(Employee.class);
 			criteria.add(Restrictions.eq("emailId", email));
@@ -85,17 +68,14 @@ public class HibernateEmployeeBasicDAO implements EmployeeBasicDAO{
 			if(list != null && !list.isEmpty()){
 				return true;
 			}
-		}catch(HibernateException ex){
-			System.out.println("isEmailAlreadyExisted");
-			ex.printStackTrace();
-		}
+		
 		return false;
 	}
 	
 	@Override
 	@Transactional
 	public Employee findEmployeeByToken(String token) {
-		try{
+		
 			Criteria criteria = mySessionFactory.getCurrentSession().createCriteria(VerificationToken.class,"verificationToken");
 			criteria.createAlias("verificationToken.employee", "employee");
 			criteria.add(Restrictions.eq("verificationToken.token",token));
@@ -104,9 +84,6 @@ public class HibernateEmployeeBasicDAO implements EmployeeBasicDAO{
 				VerificationToken verificationToken = (VerificationToken)list.get(0);
 				return verificationToken.getEmployee();
 			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 		return null;
 	}
 

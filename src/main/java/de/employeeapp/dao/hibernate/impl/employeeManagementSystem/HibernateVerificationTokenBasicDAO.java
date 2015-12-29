@@ -12,21 +12,17 @@ import org.springframework.stereotype.Component;
 import de.employeeapp.dao.interfaces.employeeManagementSystem.VerificationTokenBasicDAO;
 import de.employeeapp.dao.model.employeeManagementSystem.VerificationToken;
 @Component("verificationTokenBasicDAO")
-public class HibernateVerificationTokenBasicDAO implements VerificationTokenBasicDAO{
+public class HibernateVerificationTokenBasicDAO extends AbstractHibernateImpl implements VerificationTokenBasicDAO{
  
-	@Autowired
-	private SessionFactory mySessionFactory;
 	@Override
 	public void save(VerificationToken verificationToken) {
-		try{
-			mySessionFactory.getCurrentSession().save(verificationToken);
-		}catch(HibernateException hi){
-			hi.printStackTrace();
-		}
+
+		mySessionFactory.getCurrentSession().save(verificationToken);
+		
 	}
+	
 	@Override
 	public VerificationToken findVerificationTokenByEmployeeID(Integer employeeID) {
-		try{
 			Criteria criteria = mySessionFactory.getCurrentSession().createCriteria(VerificationToken.class,"verificationToken");
 			criteria.createAlias("verificationToken.employee", "employee");
 			criteria.add(Restrictions.eq("employee.id",employeeID));
@@ -35,10 +31,7 @@ public class HibernateVerificationTokenBasicDAO implements VerificationTokenBasi
 				VerificationToken verificationToken = (VerificationToken)list.get(0);
 				return verificationToken;
 			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return null;
+		    return null;
 	}
 
 }
