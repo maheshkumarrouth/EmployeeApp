@@ -19,7 +19,7 @@ public class GlobalControllerAdvice{
 	@ExceptionHandler(EmailAlreadyExistedException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-	public ErrorDetail emailAlreadyExistedException(Exception exception) {
+	public ErrorDetail emailAlreadyExistedException(EmailAlreadyExistedException exception) {
 		ErrorDetail error = new ErrorDetail();
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage(exception.getLocalizedMessage());
@@ -29,7 +29,17 @@ public class GlobalControllerAdvice{
 	@ExceptionHandler(UserNameAlreadyExisted.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-	public ErrorDetail userNameAlreadyExisted(Exception exception) {
+	public ErrorDetail userNameAlreadyExisted(UserNameAlreadyExisted exception) {
+		ErrorDetail error = new ErrorDetail();
+		error.setStatus(HttpStatus.BAD_REQUEST.value());
+		error.setMessage(exception.getLocalizedMessage());
+		return error;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+	public ErrorDetail globlaExceptionHandling(Exception exception) {
 		ErrorDetail error = new ErrorDetail();
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage(exception.getLocalizedMessage());
