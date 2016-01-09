@@ -1,2 +1,3 @@
 *.class
-EmployeeApp.war
+target/EmployeeApp.war
+target/
