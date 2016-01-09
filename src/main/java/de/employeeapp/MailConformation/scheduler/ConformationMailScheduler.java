@@ -35,12 +35,12 @@ public class ConformationMailScheduler {
 		System.out.println("sendMailConformation");
 		int i=0;
 		while(i<=15 && utilityClass.getActiveThreads()<=utilityClass.getMaxThreads()){
-			ConformationMailQueue conformationMailQueue = conformationMailQueueManager.fetchMailConformationData();
-			if(conformationMailQueue!=null){
-				MailConformationSendService mailConformationSendService = new MailConformationSendService(conformationMailQueue);
-				applicationContext.getAutowireCapableBeanFactory().autowireBean(mailConformationSendService);
-				executorServiceInstance.getExecutorService().execute(mailConformationSendService);
-			}
+//			ConformationMailQueue conformationMailQueue = conformationMailQueueManager.fetchMailConformationData();
+//			if(conformationMailQueue!=null){
+//				MailConformationSendService mailConformationSendService = new MailConformationSendService(conformationMailQueue);
+//				applicationContext.getAutowireCapableBeanFactory().autowireBean(mailConformationSendService);
+//				executorServiceInstance.getExecutorService().execute(mailConformationSendService);
+//			}
 		}
 	}
 	

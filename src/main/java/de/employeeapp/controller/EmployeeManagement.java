@@ -25,7 +25,6 @@ public class EmployeeManagement {
 	
 	@RequestMapping(value="/employee",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void employeeRegistration(@RequestBody Employee employee){
-		System.out.println("employeeRegistration");
 		employeeRegistrationService.doEmployeeRegistration(employee);
 	}	
 	
@@ -35,8 +34,7 @@ public class EmployeeManagement {
 	}
 	
 	@RequestMapping(value="/employee",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public Employee getEmployeeDetails(){ //
-		slf4jLogger.debug("getEmployeeDetails");
+	public Employee getEmployeeDetails(){ 
 		Employee employee = new Employee();
 		employee.setDateOfBirth(new Date());
 		employee.setEmailId("rm4964@gmail.com");

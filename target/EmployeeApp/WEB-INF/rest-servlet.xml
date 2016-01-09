@@ -20,7 +20,17 @@
 	<mvc:annotation-driven />
 	<aop:aspectj-autoproxy />
 		<tx:annotation-driven />
-	
+			
+<aop:config>
+       <aop:pointcut id="dalPointcut"
+                     expression="within(de.employeeapp.dao.hibernate.impl.employeeManagementSystem..*)"/>
+
+       <aop:advisor advice-ref="dalInterceptor" pointcut-ref="dalPointcut"/>
+   </aop:config>
+
+   <bean id="dalInterceptor"
+         class="de.employeeapp.aop.DAOExceptionInterceptor"/>
+			
 		<bean id="appProperties"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -28,7 +38,6 @@
 				<value>classpath:database.properties</value>
 			</list>
 		</property>
-		
 	   </bean> 
     	
     	<!--bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -43,5 +52,11 @@
 				<prop key="mail.smtp.starttls.enable">true</prop>
 			</props>
 		</property>
-	</bean-->  	
+	</bean-->  
+	
+	<bean id="resourceBundle" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages"/>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+		
     </beans>

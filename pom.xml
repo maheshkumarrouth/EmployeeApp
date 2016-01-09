@@ -38,16 +38,22 @@
 	<artifactId>javax.servlet-api</artifactId>
 	<version>3.0.1</version>
     </dependency>
-    	<dependency>
+    
+    <dependency>
 	<groupId>org.aspectj</groupId>
 	<artifactId>aspectjweaver</artifactId>
 	<version>1.8.5</version>
 	</dependency>
 	<dependency>
+	<groupId>commons-logging</groupId>
+	<artifactId>commons-logging</artifactId>
+	<version>1.1.1</version>
+    </dependency>
+	<dependency>
 	<groupId>xerces</groupId>
 	<artifactId>xercesImpl</artifactId>
 	<version>2.7.1</version>
-</dependency>
+    </dependency>
 	
 	<dependency>
 	<groupId>org.springframework</groupId>
@@ -135,7 +141,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.5.Final</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

@@ -17,53 +17,23 @@ public class ValidationService {
 	private EmployeeXLoginManager employeeXLoginManager;
 	@Autowired
 	private EmployeeManager employeeManager;
-		
-//	@ExceptionHandler(EmailAlreadyExistedException.class)
-//	@ResponseStatus(value=HttpStatus.NOT_FOUND)
-//	public ErrorDetail emailAlreadyExistedException(Exception exception) {
-//		ErrorDetail error = new ErrorDetail();
-//		error.setStatus(HttpStatus.BAD_REQUEST.value());
-//		error.setMessage(exception.getLocalizedMessage());
-//		return error;
-//	}
-//	
-//	@ExceptionHandler(UserNameAlreadyExisted.class)
-//	@ResponseStatus(value=HttpStatus.NOT_FOUND)
-//	public ErrorDetail userNameAlreadyExisted(Exception exception) {
-//		ErrorDetail error = new ErrorDetail();
-//		error.setStatus(HttpStatus.BAD_REQUEST.value());
-//		error.setMessage(exception.getLocalizedMessage());
-//		return error;
-//	}
 	
 	public boolean validateEmployee(de.employeeapp.beans.Employee employee) throws EmailAlreadyExistedException,UserNameAlreadyExisted{
 		if(isEmailAlreadyExisted(employee.getEmailId()))
-			throw new EmailAlreadyExistedException("Email");
+			throw new EmailAlreadyExistedException("exception.Email_Already_Existed",employee.getEmailId());
 			
 			if(isUserAlreadyExisted(employee.getLoginDetails()))
-				throw new UserNameAlreadyExisted("UserName");
+				throw new UserNameAlreadyExisted(employee.getLoginDetails().getUserName());
 				
 		return true;
 	}
 	
 	public boolean isEmailAlreadyExisted(String emailID){
-		boolean isEmailAlreadyExisted = false;
-		try{
-			isEmailAlreadyExisted = employeeManager.isEmailAlreadyExisted(emailID);	
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return isEmailAlreadyExisted;
+		return employeeManager.isEmailAlreadyExisted(emailID);	
 	}
 	
 	public boolean isUserAlreadyExisted(LoginDetails loginDetails){
-		boolean isUserAlreadyExisted = false;
-		try{
-			isUserAlreadyExisted = employeeXLoginManager.isUserAlreadyExisted(loginDetails.getUserName());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return isUserAlreadyExisted;
+			return employeeXLoginManager.isUserAlreadyExisted(loginDetails.getUserName());
 	}
 	
 	public boolean isValidToken(String token){

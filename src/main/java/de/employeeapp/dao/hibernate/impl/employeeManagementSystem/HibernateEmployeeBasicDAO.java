@@ -5,17 +5,14 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.employeeapp.dao.interfaces.employeeManagementSystem.EmployeeBasicDAO;
 import de.employeeapp.dao.model.employeeManagementSystem.Employee;
-import de.employeeapp.dao.model.employeeManagementSystem.EmployeeXLogin;
 import de.employeeapp.dao.model.employeeManagementSystem.VerificationToken;
+import de.employeeapp.exceptions.HibernateDAOException;
 
 @Component("employeeBasicDAO")
 public class HibernateEmployeeBasicDAO extends AbstractHibernateImpl implements EmployeeBasicDAO{
@@ -59,8 +56,8 @@ public class HibernateEmployeeBasicDAO extends AbstractHibernateImpl implements 
 
 	@Override
 	@Transactional
-	public boolean isEmailAlreadyExisted(String email) {
-		
+	public boolean isEmailAlreadyExisted(String email)throws HibernateDAOException{
+			System.out.println("isEmailAlreadyExisted");
 			Session session = mySessionFactory.getCurrentSession();
 			Criteria criteria = session.createCriteria(Employee.class);
 			criteria.add(Restrictions.eq("emailId", email));
