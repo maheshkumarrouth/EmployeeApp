@@ -11,12 +11,12 @@ import de.employeeapp.dao.interfaces.employeeManagementSystem.VerificationTokenB
 import de.employeeapp.dao.model.employeeManagementSystem.ConformationMailQueue;
 import de.employeeapp.dao.model.employeeManagementSystem.Employee;
 import de.employeeapp.dao.model.employeeManagementSystem.VerificationToken;
-import de.employeeapp.manager.VerificationTokenManager;
+import de.employeeapp.manager.VerificationTokenManagerImpl;
 @Component
 public class TokenGenerateListener implements ApplicationListener<OnRegistrationCompleteEvent>{
 
     @Autowired 
-    private VerificationTokenManager verificationTokenManager;
+    private VerificationTokenManagerImpl verificationTokenManager;
     @Autowired
     private ConformationMailQueueBasicDAO conformationMailQueueBasicDAO;
 	

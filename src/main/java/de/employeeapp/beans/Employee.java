@@ -2,8 +2,6 @@ package de.employeeapp.beans;
 
 import java.util.Date;
 
-import de.employeeapp.dao.model.employeeManagementSystem.EmployeeXLogin;
-
 public class Employee {
 	 
 	 private String firstName;

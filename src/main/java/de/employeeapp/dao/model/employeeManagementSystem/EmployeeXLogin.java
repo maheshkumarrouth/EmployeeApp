@@ -1,5 +1,5 @@
 package de.employeeapp.dao.model.employeeManagementSystem;
-// Generated 14 Dec, 2015 9:31:24 PM by Hibernate Tools 4.3.1
+// Generated 14 Jan, 2016 3:14:25 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 public class EmployeeXLogin  implements java.io.Serializable {
 
 
-     private Integer id;
+     private int employeeId;
      private Employee employee;
      private String username;
      private String password;
@@ -31,12 +31,12 @@ public class EmployeeXLogin  implements java.io.Serializable {
        this.lastUpdate = lastUpdate;
     }
    
-    public Integer getId() {
-        return this.id;
+    public int getEmployeeId() {
+        return this.employeeId;
     }
     
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
     public Employee getEmployee() {
         return this.employee;

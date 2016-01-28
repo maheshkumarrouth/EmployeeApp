@@ -1,22 +1,15 @@
 package de.employeeapp.exceptions;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import de.employeeapp.beans.ErrorDetail;
-import de.employeeapp.exceptions.EmailAlreadyExistedException;
-import de.employeeapp.exceptions.HibernateDAOException;
-import de.employeeapp.exceptions.UserNameAlreadyExisted;
 
 @ControllerAdvice(basePackages = {"de.employeeapp.controller"})
 public class GlobalExceptionHandler extends AbstractExceptionHandler{

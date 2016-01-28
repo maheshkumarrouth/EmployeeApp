@@ -3,7 +3,6 @@ package de.employeeapp.dao.hibernate.impl.employeeManagementSystem;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;

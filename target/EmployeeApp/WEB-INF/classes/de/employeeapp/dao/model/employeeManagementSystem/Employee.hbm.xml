@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14 Dec, 2015 9:31:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14 Jan, 2016 3:14:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="de.employeeapp.dao.model.employeeManagementSystem.Employee" table="Employee" catalog="EmployeeManagementSystem" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -38,17 +38,7 @@
         <property name="lastUpdated" type="timestamp">
             <column name="lastUpdated" length="0" not-null="true" />
         </property>
-        <set name="employeeXLogins" table="Employee_X_Login" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="employeeID" not-null="true" />
-            </key>
-            <one-to-many class="de.employeeapp.dao.model.employeeManagementSystem.EmployeeXLogin" />
-        </set>
-        <set name="verificationTokens" table="Verification_Token" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="empID" />
-            </key>
-            <one-to-many class="de.employeeapp.dao.model.employeeManagementSystem.VerificationToken" />
-        </set>
+        <one-to-one name="employeeXLogin" class="de.employeeapp.dao.model.employeeManagementSystem.EmployeeXLogin"></one-to-one>
+        <one-to-one name="verificationToken" class="de.employeeapp.dao.model.employeeManagementSystem.VerificationToken"></one-to-one>
     </class>
 </hibernate-mapping>

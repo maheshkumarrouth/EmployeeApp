@@ -24,6 +24,8 @@
 			</list>
 		</property>
 	   </bean--> 
+	   
+	   <mvc:annotation-driven />
 	  
 	<bean id="datasource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

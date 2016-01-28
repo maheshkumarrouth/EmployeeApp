@@ -3,17 +3,15 @@ package de.employeeapp.dao.hibernate.impl.employeeManagementSystem;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.employeeapp.dao.interfaces.employeeManagementSystem.ConformationMailQueueBasicDAO;
 import de.employeeapp.dao.model.employeeManagementSystem.ConformationMailQueue;
+
 @Component("conformationMailQueueBasicDAO")
 public class HibernateConformationMailQueueBasicDAO extends AbstractHibernateImpl implements ConformationMailQueueBasicDAO {
 	

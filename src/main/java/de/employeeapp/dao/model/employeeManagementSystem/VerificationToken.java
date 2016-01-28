@@ -1,5 +1,5 @@
 package de.employeeapp.dao.model.employeeManagementSystem;
-// Generated 14 Dec, 2015 9:31:24 PM by Hibernate Tools 4.3.1
+// Generated 14 Jan, 2016 3:14:25 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 public class VerificationToken  implements java.io.Serializable {
 
 
-     private Integer id;
+     private int empId;
      private Employee employee;
      private String token;
      private Date expireDate;
@@ -20,7 +20,8 @@ public class VerificationToken  implements java.io.Serializable {
     }
 
 	
-    public VerificationToken(Date lastUpdated) {
+    public VerificationToken(Employee employee, Date lastUpdated) {
+        this.employee = employee;
         this.lastUpdated = lastUpdated;
     }
     public VerificationToken(Employee employee, String token, Date expireDate, Date lastUpdated) {
@@ -30,12 +31,12 @@ public class VerificationToken  implements java.io.Serializable {
        this.lastUpdated = lastUpdated;
     }
    
-    public Integer getId() {
-        return this.id;
+    public int getEmpId() {
+        return this.empId;
     }
     
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmpId(int empId) {
+        this.empId = empId;
     }
     public Employee getEmployee() {
         return this.employee;
