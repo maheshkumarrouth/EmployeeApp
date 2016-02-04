@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import de.employeeapp.dao.interfaces.employeeManagementSystem.ConformationMailQueueBasicDAO;
 import de.employeeapp.dao.model.employeeManagementSystem.ConformationMailQueue;
 
-@Component("conformationMailQueueBasicDAO")
+@Component
 public class HibernateConformationMailQueueBasicDAO extends AbstractHibernateImpl implements ConformationMailQueueBasicDAO {
 	
 	

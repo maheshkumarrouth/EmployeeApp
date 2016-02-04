@@ -7,9 +7,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import de.employeeapp.dao.interfaces.employeeManagementSystem.ConformationMailQueueBasicDAO;
-import de.employeeapp.dao.interfaces.employeeManagementSystem.VerificationTokenBasicDAO;
 import de.employeeapp.dao.model.employeeManagementSystem.ConformationMailQueue;
-import de.employeeapp.dao.model.employeeManagementSystem.Employee;
 import de.employeeapp.dao.model.employeeManagementSystem.VerificationToken;
 import de.employeeapp.manager.VerificationTokenManagerImpl;
 @Component
