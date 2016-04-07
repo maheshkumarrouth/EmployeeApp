@@ -56,7 +56,6 @@ public class HibernateEmployeeBasicDAO extends AbstractHibernateImpl implements 
 	@Override
 	@Transactional
 	public boolean isEmailAlreadyExisted(String email)throws HibernateDAOException{
-			System.out.println("isEmailAlreadyExisted");
 			Session session = mySessionFactory.getCurrentSession();
 			Criteria criteria = session.createCriteria(Employee.class);
 			criteria.add(Restrictions.eq("emailId", email));
@@ -64,7 +63,6 @@ public class HibernateEmployeeBasicDAO extends AbstractHibernateImpl implements 
 			if(list != null && !list.isEmpty()){
 				return true;
 			}
-		
 		return false;
 	}
 	

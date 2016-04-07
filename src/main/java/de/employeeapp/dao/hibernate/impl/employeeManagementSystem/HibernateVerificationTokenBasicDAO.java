@@ -3,10 +3,7 @@ package de.employeeapp.dao.hibernate.impl.employeeManagementSystem;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import de.employeeapp.dao.interfaces.employeeManagementSystem.VerificationTokenBasicDAO;

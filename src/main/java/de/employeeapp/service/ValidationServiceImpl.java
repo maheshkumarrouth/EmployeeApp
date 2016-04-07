@@ -9,6 +9,7 @@ import de.employeeapp.exceptions.EmailAlreadyExistedException;
 import de.employeeapp.exceptions.UserNameAlreadyExisted;
 import de.employeeapp.manager.EmployeeManager;
 import de.employeeapp.manager.EmployeeXLoginManager;
+import org.springframework.cache.annotation.Cacheable;
 
 @Component
 public class ValidationServiceImpl implements ValidationService{
@@ -27,6 +28,7 @@ public class ValidationServiceImpl implements ValidationService{
 				
 		return true;
 	}
+	
 	
 	public boolean isEmailAlreadyExisted(String emailID){
 		return employeeManager.isEmailAlreadyExisted(emailID);	

@@ -40,7 +40,6 @@ public class GlobalExceptionHandler extends AbstractExceptionHandler{
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
 	public ErrorDetail hibernateDAOExeption(HibernateDAOException exception) {
-		System.out.println("hibernateDAOExeption");
 		ErrorDetail error = new ErrorDetail();
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage(exception.getLocalizedMessage());

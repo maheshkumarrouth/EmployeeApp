@@ -1,8 +1,10 @@
 package de.employeeapp.beans;
 
 public class ErrorDetail {
+	
 	private int status;
 	private String message;
+	
 	public int getStatus() {
 		return status;
 	}

@@ -33,8 +33,7 @@ public class ConformationMailScheduler {
 	
 	@Scheduled(fixedRate=50000)
 	public void sendMailConformation(){
-		System.out.println("sendMailConformation");
-		int i=0;
+		int i=16;
 		while(i<=15 && utilityClass.getActiveThreads()<=utilityClass.getMaxThreads()){
 			ConformationMailQueue conformationMailQueue = conformationMailQueueManager.fetchMailConformationData();
 			if(conformationMailQueue!=null){

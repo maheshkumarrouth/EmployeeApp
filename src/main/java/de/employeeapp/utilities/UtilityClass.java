@@ -32,6 +32,4 @@ public class UtilityClass {
 		this.maxThreads = maxThreads;
 	}
 	
-	
-	
 }

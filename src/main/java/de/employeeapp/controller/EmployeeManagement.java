@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import de.employeeapp.beans.Employee;
 import de.employeeapp.beans.LoginDetails;
 import de.employeeapp.service.EmployeeManagementService;
+import de.employeeapp.utilities.EmployeeManager;
 
 @RestController
 @RequestMapping("/employeeManagement")
@@ -25,6 +26,8 @@ public class EmployeeManagement {
 	
 	private static final Logger slf4jLogger = LoggerFactory.getLogger(EmployeeManagement.class);
 	
+	@Autowired 
+	private EmployeeManager employeeManager ;
 	@RequestMapping(value="/employee",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void employeeRegistration(@RequestBody Employee employee){
 		employeeRegistrationService.doEmployeeRegistration(employee);
@@ -37,9 +40,10 @@ public class EmployeeManagement {
 	
 	@RequestMapping(value="/employee",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public Employee getEmployeeDetails(){ 
+		slf4jLogger.debug("##############################3");
+		employeeManager.getSal(123);
 		Employee employee = new Employee();
 		employee.setDateOfBirth(new Date());
-		slf4jLogger.info("##############################3");
 		employee.setEmailId("rm4964@gmail.com");
 		employee.setEmployeeJoiningDate(new Date());
 		employee.setGender(Byte.valueOf("1"));
