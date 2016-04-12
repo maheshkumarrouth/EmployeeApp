@@ -14,7 +14,7 @@ public class Employee  implements java.io.Serializable {
      private String firstName;
      private String surName;
      private int telephone;
-     private boolean gender;
+     private byte gender;
      private String emailId;
      private Date employeeJoiningDate;
      private Date dateOfBirth;
@@ -28,7 +28,7 @@ public class Employee  implements java.io.Serializable {
     }
 
 	
-    public Employee(String firstName, String surName, int telephone, boolean gender, String emailId, byte verified, byte deleted, Date lastUpdated) {
+    public Employee(String firstName, String surName, int telephone, Byte gender, String emailId, byte verified, byte deleted, Date lastUpdated) {
         this.firstName = firstName;
         this.surName = surName;
         this.telephone = telephone;
@@ -38,7 +38,7 @@ public class Employee  implements java.io.Serializable {
         this.deleted = deleted;
         this.lastUpdated = lastUpdated;
     }
-    public Employee(String firstName, String surName, int telephone, boolean gender, String emailId, Date employeeJoiningDate, Date dateOfBirth, byte verified, byte deleted, Date lastUpdated, EmployeeXLogin employeeXLogin, VerificationToken verificationToken) {
+    public Employee(String firstName, String surName, int telephone, Byte gender, String emailId, Date employeeJoiningDate, Date dateOfBirth, byte verified, byte deleted, Date lastUpdated, EmployeeXLogin employeeXLogin, VerificationToken verificationToken) {
        this.firstName = firstName;
        this.surName = surName;
        this.telephone = telephone;
@@ -81,14 +81,20 @@ public class Employee  implements java.io.Serializable {
     public void setTelephone(int telephone) {
         this.telephone = telephone;
     }
-    public boolean isGender() {
-        return this.gender;
-    }
+   
     
-    public void setGender(boolean gender) {
-        this.gender = gender;
-    }
-    public String getEmailId() {
+    
+    public byte getGender() {
+		return gender;
+	}
+
+
+	public void setGender(byte gender) {
+		this.gender = gender;
+	}
+
+
+	public String getEmailId() {
         return this.emailId;
     }
     
@@ -144,6 +150,19 @@ public class Employee  implements java.io.Serializable {
     public void setVerificationToken(VerificationToken verificationToken) {
         this.verificationToken = verificationToken;
     }
+
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", firstName=" + firstName + ", surName="
+				+ surName + ", telephone=" + telephone + ", gender=" + gender
+				+ ", emailId=" + emailId + ", employeeJoiningDate="
+				+ employeeJoiningDate + ", dateOfBirth=" + dateOfBirth
+				+ ", verified=" + verified + ", deleted=" + deleted
+				+ ", lastUpdated=" + lastUpdated + ", employeeXLogin="
+				+ employeeXLogin + ", verificationToken=" + verificationToken
+				+ "]";
+	}
 
 
 

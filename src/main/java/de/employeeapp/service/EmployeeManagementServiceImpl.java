@@ -1,6 +1,7 @@
 package de.employeeapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import de.employeeapp.beans.Employee;
@@ -26,8 +27,12 @@ public class EmployeeManagementServiceImpl implements EmployeeManagementService{
 		if(isValidData){
 			employeeRegistrationManager.doActivateEmployee(token);
 		}
-		
 	}
 	
+	@Cacheable(value="getEmp",key="#employeeId")
+	public de.employeeapp.beans.Employee getEmployeeDetails(Integer employeeId){
+		System.out.println("getEmployeeDetails");
+		return employeeRegistrationManager.getEmployeeDetails(employeeId);
+	}
 	
 }

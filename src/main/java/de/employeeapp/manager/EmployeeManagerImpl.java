@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import de.employeeapp.beans.LoginDetails;
 import de.employeeapp.dao.interfaces.employeeManagementSystem.EmployeeBasicDAO;
 import de.employeeapp.dao.model.employeeManagementSystem.Employee;
 import de.employeeapp.events.OnRegistrationCompleteEvent;
@@ -53,6 +54,23 @@ public class EmployeeManagerImpl implements EmployeeManager{
 	
 	public boolean isEmailAlreadyExisted(String emailID){
 		return employeeBasicDAO.isEmailAlreadyExisted(emailID);
+	}
+	
+	@Transactional
+	public de.employeeapp.beans.Employee getEmployeeDetails(Integer employeeId){
+		Employee employee = employeeBasicDAO.getEmployeeDetailsByEmployeeID(employeeId);
+		de.employeeapp.beans.Employee e = new de.employeeapp.beans.Employee();
+		LoginDetails loginDetails = new LoginDetails();
+		loginDetails.setUserName(employee.getEmployeeXLogin().getUsername());
+		loginDetails.setPassword(employee.getEmployeeXLogin().getPassword());
+		e.setLoginDetails(loginDetails);
+		e.setDateOfBirth(employee.getDateOfBirth());
+		e.setEmailId(employee.getEmailId());
+		e.setEmployeeJoiningDate(employee.getEmployeeJoiningDate());
+		e.setFirstName(employee.getFirstName());
+		e.setSurName(employee.getSurName());
+		e.setTelephone(employee.getTelephone());
+		return e;
 	}
 	
 }

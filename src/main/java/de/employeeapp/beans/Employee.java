@@ -63,11 +63,5 @@ public class Employee {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	
-	@Cacheable(value="check", key="#a")
-	public int getEmployee(int a){
-		System.out.println("getEmployee");
-		return a;
-	}
-	
+		
 }

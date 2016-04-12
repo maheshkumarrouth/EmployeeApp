@@ -12,5 +12,6 @@ public class DataAccessObjectExceptionInterceptor {
 			pointcut = "within(de.employeeapp.dao.hibernate.impl.employeeManagementSystem.*)",throwing= "excep")
 		    public void logAfterThrowing(JoinPoint joinPoint, Throwable excep) throws Exception{
 				System.out.println("logAfterThrowing");
+				excep.printStackTrace();
      		}
 }

@@ -7,4 +7,5 @@ public interface EmployeeManager {
 	public void doActivateEmployee(String token);
 	public Employee fetchEmployeeObjectByToken(String token);
 	public boolean isEmailAlreadyExisted(String emailID);
+	public de.employeeapp.beans.Employee getEmployeeDetails(Integer employeeId);
 }
