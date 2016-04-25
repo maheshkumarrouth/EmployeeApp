@@ -36,8 +36,15 @@ public class EmployeeManagement {
 	}
 	
 	@RequestMapping(value="/employee",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public Employee getEmployeeDetails(@RequestParam(value="empID") Integer empID){ 
-		slf4jLogger.debug("Search Employee By {}",empID);
-		return employeeManagementService.getEmployeeDetails(empID);
+	public Employee getEmployeeDetails(@RequestParam(value="emailId") String emailId){ 
+		slf4jLogger.debug("Search Employee By {}",emailId);
+		return employeeManagementService.getEmployeeDetails(emailId);
 	}
+	
+	@RequestMapping(value="employee",method=RequestMethod.DELETE)
+	public void dropEmployee(@RequestParam(value="emailId") String emailId){
+		System.out.println("dropEmployee");
+		employeeManagementService.deleteEmployee(emailId);
+	}
+	
 }

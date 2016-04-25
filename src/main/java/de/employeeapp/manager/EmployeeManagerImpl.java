@@ -1,6 +1,7 @@
 package de.employeeapp.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,6 @@ public class EmployeeManagerImpl implements EmployeeManager{
 	
 	@Transactional(readOnly=false)
 	public void doEmployeeRegistration(de.employeeapp.beans.Employee employee){
-		
 		Employee employeeObject = new Employee();
 		employeeObject.setFirstName(employee.getFirstName());
 		employeeObject.setSurName(employee.getSurName());
@@ -31,11 +31,13 @@ public class EmployeeManagerImpl implements EmployeeManager{
 		employeeObject.setEmailId(employee.getEmailId());
 		employeeObject.setEmployeeJoiningDate(employee.getEmployeeJoiningDate());
 		employeeBasicDAO.saveEmployeeDetails(employeeObject);
-		
 		employeeXLoginManager.saveUserCreadentials(employee.getLoginDetails(),employeeObject);
-		
 		eventPublisher.publishEvent(new OnRegistrationCompleteEvent(employeeObject));
-		
+		evictParticularEmployeeData(employee.getEmailId());
+	}
+	
+	@CacheEvict(value = "employee", key = "#emailId")
+	public void evictParticularEmployeeData(String employeeId){
 		
 	}
 	
@@ -57,8 +59,8 @@ public class EmployeeManagerImpl implements EmployeeManager{
 	}
 	
 	@Transactional
-	public de.employeeapp.beans.Employee getEmployeeDetails(Integer employeeId){
-		Employee employee = employeeBasicDAO.getEmployeeDetailsByEmployeeID(employeeId);
+	public de.employeeapp.beans.Employee getEmployeeDetails(String emailId){
+		Employee employee = employeeBasicDAO.getEmployeeDetailsByEmail(emailId);
 		de.employeeapp.beans.Employee e = new de.employeeapp.beans.Employee();
 		LoginDetails loginDetails = new LoginDetails();
 		loginDetails.setUserName(employee.getEmployeeXLogin().getUsername());
@@ -71,6 +73,11 @@ public class EmployeeManagerImpl implements EmployeeManager{
 		e.setSurName(employee.getSurName());
 		e.setTelephone(employee.getTelephone());
 		return e;
+	}
+	
+	@Transactional(readOnly=false)
+	public void deleteEmployee(String emailID){
+		employeeBasicDAO.delete(emailID);
 	}
 	
 }

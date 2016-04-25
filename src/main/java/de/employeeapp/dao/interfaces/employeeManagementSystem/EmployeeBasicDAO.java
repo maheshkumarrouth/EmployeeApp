@@ -19,4 +19,8 @@ public interface EmployeeBasicDAO {
 	
 	public void updateEmployeeDetails(Employee employee);
 	
+	public Employee getEmployeeDetailsByEmail(String emailID);
+	
+	public void delete(String emilID);
+	
 }

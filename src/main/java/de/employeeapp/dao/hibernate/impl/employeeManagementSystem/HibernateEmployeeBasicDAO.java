@@ -3,6 +3,7 @@ package de.employeeapp.dao.hibernate.impl.employeeManagementSystem;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
@@ -18,11 +19,17 @@ public class HibernateEmployeeBasicDAO extends AbstractHibernateImpl implements 
 
 	@Override
 	public Employee saveEmployeeDetails(Employee employee) {
-		
 			Session session = mySessionFactory.getCurrentSession();
 			session.save(employee);
-		
 		return employee;
+	}
+	
+	public void delete(String emilID){
+		Session session = mySessionFactory.getCurrentSession();
+		Query query = session.createSQLQuery("delete from EmployeeManagementSystem.Employee where emailId=:emilID");
+		query.setString("emilID",emilID);
+		query.executeUpdate();
+		
 	}
 
 	@Override
@@ -44,6 +51,19 @@ public class HibernateEmployeeBasicDAO extends AbstractHibernateImpl implements 
 			}
 			return (Employee)list.get(0);
 	}
+	
+	@Override
+	public Employee getEmployeeDetailsByEmail(String emailID) {
+			Session session = mySessionFactory.getCurrentSession();
+			Criteria criteria = session.createCriteria(Employee.class);
+			criteria.add(Restrictions.eq("emailId",emailID));
+			List list = criteria.list();
+			if(list == null || list.isEmpty()){
+				return null;
+			}
+			return (Employee)list.get(0);
+	}
+	
 
 	@Override
 	public List loadAllEmployeeDetails() {
