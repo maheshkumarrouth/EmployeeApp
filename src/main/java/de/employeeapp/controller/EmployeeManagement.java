@@ -3,6 +3,7 @@ package de.employeeapp.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.employeeapp.beans.Employee;
+import de.employeeapp.profiles.SpringProfilesTest;
 import de.employeeapp.service.EmployeeManagementService;
 import de.employeeapp.utilities.EmployeeManager;
 
@@ -25,6 +27,11 @@ public class EmployeeManagement {
 	
 	@Autowired 
 	private EmployeeManager employeeManager ;
+	@Autowired
+	private SpringProfilesTest springProfilesTest;
+	@Autowired
+	private ConfigurableEnvironment env;
+	
 	@RequestMapping(value="/employee",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void employeeRegistration(@RequestBody Employee employee){
 		employeeManagementService.doEmployeeRegistration(employee);
@@ -38,6 +45,8 @@ public class EmployeeManagement {
 	@RequestMapping(value="/employee",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public Employee getEmployeeDetails(@RequestParam(value="emailId") String emailId){ 
 		slf4jLogger.debug("Search Employee By {}",emailId);
+		env.setActiveProfiles("dev");
+		springProfilesTest.setupDatasource();
 		return employeeManagementService.getEmployeeDetails(emailId);
 	}
 	
