@@ -177,10 +177,11 @@
                   </goals>
                   <configuration>
                   <tasks>
+                      <echo>${project.basedir}</echo>
                      <echo>Using env.test.properties</echo>
                      <echo>${project.build.outputDirectory}</echo>
                      <delete file="${project.build.outputDirectory}/database.properties"/>
-            <copy file="src/main/resources/testdatabase.properties" tofile
+            <copy file="${project.build.resources[0].directory}/testdatabase.properties" tofile
 		    ="${project.build.outputDirectory}/database.properties"/>
                   </tasks>
                   </configuration>
