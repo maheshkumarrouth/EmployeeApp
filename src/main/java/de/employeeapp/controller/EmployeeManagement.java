@@ -45,8 +45,10 @@ public class EmployeeManagement {
 	@RequestMapping(value="/employee",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public Employee getEmployeeDetails(@RequestParam(value="emailId") String emailId){ 
 		slf4jLogger.debug("Search Employee By {}",emailId);
-		env.setActiveProfiles("dev");
+		//env.setActiveProfiles("dev");
 		springProfilesTest.setupDatasource();
+		String strClassPath = System.getProperty("java.class.path");
+		System.out.println("Classpath is " + strClassPath);
 		return employeeManagementService.getEmployeeDetails(emailId);
 	}
 	
