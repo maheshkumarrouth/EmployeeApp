@@ -1,5 +1,9 @@
 package de.employeeapp.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +53,19 @@ public class EmployeeManagement {
 		springProfilesTest.setupDatasource();
 		String strClassPath = System.getProperty("java.class.path");
 		System.out.println("Classpath is " + strClassPath);
+		Properties prop = new Properties();
+		String propFileName = "database.properties";
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+		if (inputStream != null) {
+			try {
+				prop.load(inputStream);
+				String user = prop.getProperty("db.driver");
+				System.out.println(user);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return employeeManagementService.getEmployeeDetails(emailId);
 	}
 	
