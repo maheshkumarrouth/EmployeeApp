@@ -6,6 +6,6 @@ public class EmployeeJunitClass {
 	
 	@Test
 	public void EmployeeCreationTestCase(de.employeeapp.beans.Employee employee){
-		
+		 
 	}
 }
