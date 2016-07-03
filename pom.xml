@@ -25,7 +25,12 @@
     <version>1.10.19</version>
 </dependency>
 	
-	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>2.5</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.ning</groupId>
 			<artifactId>async-http-client</artifactId>
@@ -128,13 +133,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>Kunin2006A</groupId>
-			<artifactId>Kunin2006A</artifactId>
-			<version>1.0</version>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -161,47 +160,53 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>2.10.1</version>
-        </dependency>
-		
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>1.8</version>
+		</dependency>
+
 	</dependencies>
-	
-		<profiles>
-      <profile>
-      <id>test</id>
-      <build>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <version>1.1</version>
-            <executions>
-               <execution>
-                  <phase>test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                  <tasks>
-                      <echo>${project.basedir}</echo>
-                     <echo>Using env.test.properties</echo>
-                     <echo>${project.build.outputDirectory}</echo>
-                     <delete file="${project.build.outputDirectory}/database.properties"/>
-            <copy file="${project.build.resources[0].directory}/testdatabase.properties" tofile
-		    ="${project.build.outputDirectory}/database.properties"/>
-                  </tasks>
-                  </configuration>
-               </execution>
-            </executions>
-         </plugin>
-      </plugins>
-      </build>
-      </profile>
-   </profiles>
+
+	<profiles>
+		<profile>
+			<id>test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>${project.basedir}</echo>
+										<echo>Using env.test.properties</echo>
+										<echo>${project.build.outputDirectory}</echo>
+										<delete file="${project.build.outputDirectory}/database.properties" />
+										<copy
+											file="${project.build.resources[0].directory}/testdatabase.properties"
+											tofile="${project.build.outputDirectory}/database.properties" />
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<build>
 		<finalName>EmployeeApp</finalName>
 		<plugins>
