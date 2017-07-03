@@ -32,10 +32,6 @@ public class EmployeeJunitClass {
 //	}
 
 	@Test
-<<<<<<< HEAD
-	public void EmployeeCreationTestCase(de.employeeapp.beans.Employee employee){
-		 
-=======
 	public void employeeCreationTestCase() {
 
 		EmployeeManagementServiceImpl serviceImpl = new EmployeeManagementServiceImpl();
@@ -44,6 +40,5 @@ public class EmployeeJunitClass {
 		employee.setFirstName("Test");
 		employee.setDateOfBirth(new Date());
 		serviceImpl.doEmployeeRegistration(employee);
->>>>>>> a90ce2d9e5031ba8d6fc175897478970cf91d510
 	}
 }
